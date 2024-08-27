@@ -16,9 +16,21 @@ class AboutView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["title"] = "Home - О нас"
-        context["content"] = "О нас"
-        context["text_on_page"] = (
-            "Текст о том почему этот магазин такой классный, и какой хороший товар."
-        )
+
+        return context
+    
+class DeliveryView(TemplateView):
+    template_name = "main/delivery.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        return context
+    
+class ContactsView(TemplateView):
+    template_name = "main/contacts.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
         return context
