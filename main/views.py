@@ -1,22 +1,36 @@
-from django.http import HttpResponse
-from django.shortcuts import render
+from django.views.generic import TemplateView
 
-from goods.models import Categories
 
-def index(request):
+class IndexView(TemplateView):
+    template_name = "main/index.html"
 
-    context = {
-        'title': 'Home - Главная',
-        'content' : 'Магазин мебели HOME',
-    }
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = "Home - Главная"
+        context["content"] = "Магазин мебели HOME"
+        return context
+
+
+class AboutView(TemplateView):
+    template_name = "main/about.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        return context
     
-    return render(request, 'main/index.html', context)
+class DeliveryView(TemplateView):
+    template_name = "main/delivery.html"
 
-def about(request):
-    context = {
-        'title': 'Home - О нас',
-        'content' : 'О нас',
-        'text_on_page': 'Какой-то текст'
-    }
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        return context
     
-    return render(request, 'main/about.html', context)
+class ContactsView(TemplateView):
+    template_name = "main/contacts.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        return context
