@@ -24,9 +24,14 @@ class Cart(models.Model):
         null=True,
     )
     product = models.ForeignKey(
-        to=Products, on_delete=models.CASCADE, verbose_name="Товар"
+        to=Products,
+        on_delete=models.CASCADE,
+        verbose_name="Товар",
     )
-    quantity = models.PositiveSmallIntegerField(default=0, verbose_name="Количество")
+    quantity = models.PositiveSmallIntegerField(
+        default=0,
+        verbose_name="Количество"
+    )
     session_key = models.CharField(max_length=32, null=True, blank=True)
     created_timestamp = models.DateTimeField(
         auto_now_add=True, verbose_name="Дата обновления"
@@ -34,9 +39,7 @@ class Cart(models.Model):
 
     class Meta:
         db_table = "cart"
-        verbose_name = (
-            "Корзина"  # Отображение в админке. Единичное / множественное число
-        )
+        verbose_name = "Корзина"
         verbose_name_plural = "Корзина"
 
     objects = CartQueryset().as_manager()

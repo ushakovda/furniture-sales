@@ -1,7 +1,7 @@
 {% load static %}
 
 <div class="card mb-3 text-bg-light shadow-lg">
-    {% for cart in carts  %}
+    {% for cart in carts %}
         <div class="card-header">
             <h5 class="card-title">{{ cart.product.name }}</h5>
         </div>
@@ -31,12 +31,12 @@
                     <div class="col p-0">
                         <p>x {{ cart.product.sell_price }} = </p>
                     </div>
-                    <div class="col p-0"><strong>{{ cart.products_price }} $</strong></div>
+                    <div class="col p-0"><strong> {{cart.products_price}} $</strong></div>
                     <div class="col p-0">
                         <a href="{% url "cart:cart_remove" %}" class="remove-from-cart"
-                         data-cart-id="{{ cart.id }}">
-                         {% csrf_token %}
-                            <img class="mx-1" src="{% static 'deps/icons/trash3-fill.svg' %}"
+                        data-cart-id="{{ cart.id }}">
+                            {% csrf_token %}
+                            <img class="mx-1" src="{% static "deps/icons/trash3-fill.svg" %}"
                                 alt="Catalog Icon" width="16" height="16">
                         </a>
                     </div>
@@ -51,7 +51,7 @@
         <h4 class="float-left"><strong>{{ carts.total_price }} $</strong></h4>
     </div>
 </div>
-{% if carts and not order %}
+{% if carts and not order%}
 <a class="btn btn-dark" href="{% url "orders:create_order" %}">
     Оформить заказ
 </a>

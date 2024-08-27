@@ -2,7 +2,6 @@ from django.contrib import admin
 
 from carts.models import Cart
 
-# admin.site.register(Cart)
 
 class CartTabAdmin(admin.TabularInline):
     model = Cart
@@ -14,7 +13,10 @@ class CartTabAdmin(admin.TabularInline):
 
 @admin.register(Cart)
 class CartAdmin(admin.ModelAdmin):
-    list_display = ['user_display', 'product_display', 'quantity', 'created_timestamp',]
+    list_display = [
+        'user_display', 'product_display',
+        'quantity', 'created_timestamp',
+        ]
     search_filter = ['created_timestamp', 'user', 'product__name',]
 
     def user_display(self, obj):
