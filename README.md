@@ -16,7 +16,9 @@
         'PORT': '5432',
     }
 }"
-5) python manage.py migrate
-6) Создайте суперпользователя для доступа к админ-панели: "python manage.py createsuperuser"
-7) Запустите сервер разработки Django: "python manage.py runserver"
-8) Наслаждайтесь!
+5) Используйте следующие команды для загрузки фикстур:
+python manage.py loaddata fixtures/goods/categories.json
+python manage.py loaddata fixtures/goods/products.json
+6) Миграции: python manage.py migrate
+7) Создайте суперпользователя для доступа к админ-панели: "python manage.py createsuperuser"
+8) Запустите сервер разработки Django: "python manage.py runserver"
